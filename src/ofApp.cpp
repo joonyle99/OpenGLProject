@@ -1,8 +1,21 @@
-#include "ofApp.h"
+﻿#include "ofApp.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	// screen
+	//triangle.addVertex(glm::vec3(0.0, 0.0, 0.0));
+	//triangle.addVertex(glm::vec3(0.0, 768.0, 0.0));
+	//triangle.addVertex(glm::vec3(1024.0, 768.0, 0.0));
 
+	// ndc (normal device coordinates)
+	triangle.addVertex(glm::vec3(-1.0f, 1.0f, 0.0f));
+	triangle.addVertex(glm::vec3(-1.0f, -1.0f, 0.0f));
+	triangle.addVertex(glm::vec3(1.0f, -1.0f, 0.0f));
+	triangle.addColor(ofFloatColor(1.0f, 0.0f, 0.0f, 1.0f)); // r
+	triangle.addColor(ofFloatColor(0.0f, 1.0f, 0.0f, 1.0f)); // g
+	triangle.addColor(ofFloatColor(0.0f, 0.0f, 1.0f, 1.0f)); // b
+
+	shader.load("first_vertext.vert", "first_fragment.frag");
 }
 
 //--------------------------------------------------------------
@@ -12,12 +25,17 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	shader.begin();
+	shader.setUniform4f("fragmentColor2", glm::vec4(0, 1, 1, 1)); // shader.begin() 뒤에 호출되어야. 대상 셰이더가 지정된다
+	triangle.draw();
+	shader.end();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	// origin: left top (0, 0)
+	//glm::vec3 curPos = triangle.getVertex(2);
+	//triangle.setVertex(2, curPos + glm::vec3(0, -20, 0));
 }
 
 //--------------------------------------------------------------

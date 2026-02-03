@@ -3,6 +3,9 @@
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
+	public:
+		ofMesh triangle;
+		ofShader shader;
 
 	public:
 		void setup();
