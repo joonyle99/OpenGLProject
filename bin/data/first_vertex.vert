@@ -1,4 +1,5 @@
 ﻿#version 410
+
 layout ( location = 0) in vec3 pos; // 한 번에 하나의 버텍스를 처리한다
 layout ( location = 1) in vec4 color;
 
